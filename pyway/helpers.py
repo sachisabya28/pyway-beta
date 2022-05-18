@@ -70,6 +70,7 @@ class Utils():
     @staticmethod
     def get_local_files():
         path = Utils.basepath()
+        print('path', path)
         dir_list = None
         try:
             dir_list = os.listdir(path)
