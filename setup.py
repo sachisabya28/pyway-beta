@@ -23,8 +23,8 @@ setup(
     description='Pyway is a database versioning and migration tool inspired on Flyway',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/sergiosbx/pyway',
-    download_url='https://github.com/sergiosbx/pyway/tarball/' + __version__,
+    url='https://github.com/sachisabya28/pyway-beta',
+    download_url='https://github.com/sachisabya28/pyway-beta/tarball/' + __version__,
     license='GPL',
     classifiers=[
       'Development Status :: 3 - Alpha',
