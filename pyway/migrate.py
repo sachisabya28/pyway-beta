@@ -13,6 +13,7 @@ class Migrate():
         self._db = factory(conf.DBMS)(conf)
         print('self._db',self._db)
         self._migration_dir = conf.DATABASE_MIGRATION_DIR
+        print('self._migration_dir',self._migration_dir)
 
     def run(self):
         migrations_to_be_executed = self._get_migration_files_to_be_executed()
@@ -24,7 +25,7 @@ class Migrate():
         for migration in migrations_to_be_executed:
             logger.info("Migrating --> %s" % migration.name)
             try:
-                print(migration.name,migration.name)
+                print('migration.name',migration.name)
                 with open(Utils.fullname(migration.name), "r") as sqlfile:
                     self._db.execute(sqlfile.read())
                 self._db.upgrade_version(migration)
@@ -34,7 +35,9 @@ class Migrate():
 
     def _get_migration_files_to_be_executed(self):
         all_local_migrations = self._get_all_local_migrations()
+        print('all_local_migrations',all_local_migrations)
         all_db_migrations = Migration.from_list(self._db.get_all_schema_migrations())
+        print('all_db_migrations',all_db_migrations)
         if all_db_migrations and not all_local_migrations:
             logger.error(MIGRATIONS_NOT_FOUND % self._migration_dir)
         return Utils.subtract(all_local_migrations, all_db_migrations)
