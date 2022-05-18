@@ -15,10 +15,12 @@ class Utils():
         print('list_b', list_b)
         result = []
         if list_a and list_b:
+            print('both list are available')
             checksum_list_b = [b.checksum for b in list_b]
             result = [a for a in list_a if a.checksum not in checksum_list_b]
-        print('result', result)
-        return result
+            return result
+        if not list_b:
+            return list_a
 
     @staticmethod
     def expected_pattern():
